@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int main(int argc, char* argv[]) {
+int main() {
     char username[MAXUSERNAME];
     printf("\033[2J\033[HUsername: ");
     fgets(username, MAXUSERNAME, stdin);
