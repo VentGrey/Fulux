@@ -44,7 +44,7 @@ void print_message(char* user, char* message) {
     }
 }
 
-char* wait_for_message_input(char* username) {
+void wait_for_message_input(char* username) {
     char message[MAXMSGLEN];
     fgets(message, MAXMSGLEN, stdin);
     putc(127, stdin);
