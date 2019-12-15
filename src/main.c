@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[]) {
     char username[MAXUSERNAME];
-    printf("\e[2J\e[HUsername: ");
+    printf("\033[2J\033[HUsername: ");
     fgets(username, MAXUSERNAME, stdin);
     fflush(stdin);
     username[strlen(username)-1] = 0;

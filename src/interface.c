@@ -20,7 +20,7 @@ typedef enum {
 }CURSORMOVEDIRECTION;
 
 void move_cursor(CURSORMOVEDIRECTION direction, byte ammount) {
-    printf("\e[%u%c", ammount, 'A' + direction);
+    printf("\033[%u%c", ammount, 'A' + direction);
 }
 
 void exits(char* string, int code) {
@@ -52,13 +52,13 @@ char* wait_for_message_input(char* username) {
 }
 
 void draw_interface(char* username) {
-    printf("\e[2J\e[H"); //clear screen
+    printf("\033[2J\033[H"); //clear screen
     struct winsize vts;
     if (ioctl(0,  TIOCGWINSZ, &vts) == -1) exits("fuck you", 1) ;
     //make sure we're on 1,1
     move_cursor(up, vts.ws_row);
     move_cursor(left, vts.ws_col);
-    printf("Username: %s\e[%uC| Fulux", username, vts.ws_col - 17 - strlen(username)); //FORMAT STRING VULNURABILITY!!!!!!
+    printf("Username: %s\033[%uC| Fulux", username, vts.ws_col - 17 - strlen(username)); //FORMAT STRING VULNURABILITY!!!!!!
     putc('\r', stdout); 
     move_cursor(down, 1);
     for (int i = 0; i < vts.ws_col; i++)
