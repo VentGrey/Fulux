@@ -38,7 +38,7 @@ void print_message(char* user, char* message) {
     lines_moved = (strlen(user) + strlen(message)) / vts.ws_col;
     current_print_message_row += ++lines_moved;
     printf("%s: ", user);
-    for (int i = 0; i < strlen(message); i++) {
+    for (int i = 0; i < (int) strlen(message); i++) {
         if (message[i] != '\n') putc(message[i], stdout);
         else continue;
     }
@@ -58,7 +58,7 @@ void draw_interface(char* username) {
     //make sure we're on 1,1
     move_cursor(up, vts.ws_row);
     move_cursor(left, vts.ws_col);
-    printf("Username: %s\033[%luC| Fulux", username, vts.ws_col - 17 - strlen(username)); //FORMAT STRING VULNURABILITY!!!!!!
+    printf("Username: %s\033[%luC| Fulux", username, vts.ws_col - 17 - strlen(username));
     putc('\r', stdout); 
     move_cursor(down, 1);
     for (int i = 0; i < vts.ws_col; i++)
